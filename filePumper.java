@@ -31,12 +31,13 @@ public class filePumper // Class head
             // === *** Graphical User Interface *** ===
             JFrame mainWindow = new JFrame("BitByByte"); // Creates new window with the title "BitByByte"
             mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Exit the program on close of the frame.
-            ImageIcon img = new ImageIcon("faucet.jpg"); // Creates new ImageIcon object.
-            mainWindow.setIconImage(img.getImage()); // Sets icon from ImageIcon object value.
+            ImageIcon icon = new ImageIcon("faucet.jpg"); // Creates new ImageIcon object.
+            mainWindow.setIconImage(icon.getImage()); // Sets icon from ImageIcon object value.
             mainWindow.setResizable(false); // Disables re-sizing.
             
             // *** Text Box ***
             JTextField textBox = new JTextField("Choose a file..."); // Creates new text box with "Choose a file.." as the default text.
+            textBox.setPreferredSize(new Dimension(500,25)); // Resizes text box, so they user can see the file directory.
             textBox.addMouseListener(new MouseAdapter() { // Adds listener to the mouse.
             @Override // Overrides parent class.
             public void mouseClicked(MouseEvent e) { // Declares mouse event "e" when mouse is clicked.
@@ -46,7 +47,7 @@ public class filePumper // Class head
             
             // *** Resizing ***
             JPanel texty = new JPanel(); // Creates new JPanel for grid
-            texty.setPreferredSize(new Dimension(60, 40)); // Sets Jpanel to a certain dimensions (Width by height)
+            texty.setPreferredSize(new Dimension(400, 40)); // Sets Jpanel to a certain dimensions (Width by height)
             JPanel butty = new JPanel(); // Creates new JPanel for grid
             butty.setPreferredSize(new Dimension(60, 40)); // Sets Jpanel to a certain dimensions (Width by height)
             
@@ -54,20 +55,24 @@ public class filePumper // Class head
             
             // *** Graphical User Interface Buttons/Textbox ***
             JButton buttonPump = new JButton("Pump those hexidecimals baby!"); // Creates button.
+            buttonPump.setBorderPainted(false); // Removes border paint.
+            buttonPump.setFocusPainted(false); // Removes blue focus ring around the button.
             texty.add(textBox); // Adds panel to textBox.
             mainWindow.getContentPane().add(texty, BorderLayout.NORTH); // Attaches the texty JPanel mainwindow.
             butty.add(buttonPump); // Adds panel to buttonPump.
             mainWindow.getContentPane().add(butty, BorderLayout.SOUTH); // Attaches the butty JPanel mainwindow.
             
-            butty.setBackground(Color.black); // Sets JPanel butty background to black.
-            texty.setBackground(Color.black); // Sets JPanel texty background to black.
-            mainWindow.setBackground(Color.black); // Sets JFrame mainWindow background to black.
             
             mainWindow.pack(); // Sizes the frame so that all its contents are at or above their preferred sizes.
             
             // === *** GUI VISUAL SETTINGS *** ===
             mainWindow.setSize(600, 200); // Size of the window (Width by height)
+            butty.setBackground(Color.black); // Sets JPanel butty background to black.
+            buttonPump.setBackground(Color.gray); // Sets button background color to gray. (Contrasting colors)
+            buttonPump.setForeground(Color.white); // Sets button text color to white. (Contrasting colors)
+            texty.setBackground(Color.black); // Sets JPanel texty background to black.
+            mainWindow.getContentPane().setBackground(Color.black); // Sets Jframe butty background to black.
             mainWindow.setVisible(true); // Make the frame visisble on the screen via execution.
-            textBox.setFont(new Font("Arial", Font.ITALIC, 10)); // Changes textBox font to Arial, Italic, and to size 10.
+            textBox.setFont(new Font("Arial", Font.ITALIC, 20)); // Changes textBox font to Arial, Italic, and to size 10.
          }
 }
