@@ -68,7 +68,7 @@ public class filePumper // Class head
             radioList.add(teraByte);
             
             // *** Graphical User Interface Buttons/Textbox ***
-            JButton buttonPump = new JButton("Pump those hexidecimals baby!"); // Creates button.
+            JButton buttonPump = new JButton("Pump those hexidecimals baby! (Please check only one radio button)"); // Creates button.
             buttonPump.setBorderPainted(false); // Removes border paint.
             buttonPump.setFocusPainted(false); // Removes blue focus ring around the button.
             texty.add(textBox); // Adds panel to textBox.
@@ -81,21 +81,22 @@ public class filePumper // Class head
             
             // === *** GUI VISUAL SETTINGS *** ===
             mainWindow.setSize(600, 200); // Size of the window (Width by height)
-            kiloByte.setBackground(Color.black); // Sets JPanel butty background to black.
-            kiloByte.setForeground(Color.white);
-            megaByte.setBackground(Color.black); // Sets JPanel butty background to black.
-            megaByte.setForeground(Color.white);
-            gigaByte.setBackground(Color.black); // Sets JPanel butty background to black.
-            gigaByte.setForeground(Color.white);
-            teraByte.setBackground(Color.black); // Sets JPanel butty background to black.
-            teraByte.setForeground(Color.white);
+            kiloByte.setBackground(Color.black); // Sets kiloByte radio background to black.
+            kiloByte.setForeground(Color.white); // Sets kiloByte radio text to white.
+            megaByte.setBackground(Color.black); // Sets megaByte radio background to black.
+            megaByte.setForeground(Color.white); // Sets megaByte radio text to white.
+            gigaByte.setBackground(Color.black); // Sets gigaByte radio background to black.
+            gigaByte.setForeground(Color.white); // Sets gigaByte radio text to white.
+            teraByte.setBackground(Color.black); // Sets teraByte radio background to black.
+            teraByte.setForeground(Color.white); // Sets terabyte radio text to white.
             radioList.setBackground(Color.black); // Sets JPanel butty background to black.
             butty.setBackground(Color.black); // Sets JPanel butty background to black.
             buttonPump.setBackground(Color.gray); // Sets button background color to gray. (Contrasting colors)
             buttonPump.setForeground(Color.white); // Sets button text color to white. (Contrasting colors)
             texty.setBackground(Color.black); // Sets JPanel texty background to black.
             mainWindow.getContentPane().setBackground(Color.black); // Sets Jframe butty background to black.
+            butty.requestFocusInWindow(); // Sets focus on button to avoid focus on textField, because it will include "Choose a file..." if user types without clicking the textField.
             mainWindow.setVisible(true); // Make the frame visisble on the screen via execution.
             textBox.setFont(new Font("Arial", Font.ITALIC, 20)); // Changes textBox font to Arial, Italic, and to size 10.
          }
-     }
+}
