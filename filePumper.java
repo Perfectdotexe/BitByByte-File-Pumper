@@ -18,14 +18,14 @@ import java.awt.GridLayout; // The GridLayout class is a layout manager that lay
 import java.awt.GridBagLayout; // The GridBagLayout class is a flexible layout manager that aligns components vertically, horizontally or along their baseline without requiring that the components be of the same size.
 import java.awt.Component; // A component is an object having a graphical representation that can be displayed on the screen and that can interact with the user.
 import java.awt.Dimension; // The Dimension class encapsulates the width and height of a component (in integer precision) in a single object.
+import javax.swing.JRadioButton;
 
 //Define object
 public class filePumper // Class head
-
    {
       public static void main(String[] args) // Main method
          {
-
+            
             Scanner keyboard = new Scanner(System.in); // Creates a Scanner object for keyboard input.
             
             // === *** Graphical User Interface *** ===
@@ -34,9 +34,11 @@ public class filePumper // Class head
             ImageIcon icon = new ImageIcon("faucet.jpg"); // Creates new ImageIcon object.
             mainWindow.setIconImage(icon.getImage()); // Sets icon from ImageIcon object value.
             mainWindow.setResizable(false); // Disables re-sizing.
+            mainWindow.setLocationRelativeTo(null); // Center JFrame window.
             
             // *** Text Box ***
             JTextField textBox = new JTextField("Choose a file..."); // Creates new text box with "Choose a file.." as the default text.
+            textBox.setBorder(javax.swing.BorderFactory.createEmptyBorder()); // Removes blue border around text box.
             textBox.setPreferredSize(new Dimension(500,25)); // Resizes text box, so they user can see the file directory.
             textBox.addMouseListener(new MouseAdapter() { // Adds listener to the mouse.
             @Override // Overrides parent class.
@@ -50,8 +52,20 @@ public class filePumper // Class head
             texty.setPreferredSize(new Dimension(400, 40)); // Sets Jpanel to a certain dimensions (Width by height)
             JPanel butty = new JPanel(); // Creates new JPanel for grid
             butty.setPreferredSize(new Dimension(60, 40)); // Sets Jpanel to a certain dimensions (Width by height)
+            JPanel bytePoints = new JPanel(); // Creates new JPanel for grid
+            bytePoints.setPreferredSize(new Dimension(60, 40)); // Sets Jpanel to a certain dimensions (Width by height)
             
-            // *** Layout ***
+            // *** RADIO BUTTONS ***
+            JRadioButton kiloByte = new JRadioButton ("Kilobyte(s)");
+            JRadioButton megaByte = new JRadioButton ("Megabyte(s)");
+            JRadioButton gigaByte = new JRadioButton ("Gigabyte(s)");
+            JRadioButton teraByte = new JRadioButton ("Terabyte(s)");
+
+            JPanel radioList = new JPanel();
+            radioList.add(kiloByte);
+            radioList.add(megaByte);
+            radioList.add(gigaByte);
+            radioList.add(teraByte);
             
             // *** Graphical User Interface Buttons/Textbox ***
             JButton buttonPump = new JButton("Pump those hexidecimals baby!"); // Creates button.
@@ -61,12 +75,21 @@ public class filePumper // Class head
             mainWindow.getContentPane().add(texty, BorderLayout.NORTH); // Attaches the texty JPanel mainwindow.
             butty.add(buttonPump); // Adds panel to buttonPump.
             mainWindow.getContentPane().add(butty, BorderLayout.SOUTH); // Attaches the butty JPanel mainwindow.
-            
+            mainWindow.getContentPane().add(radioList, BorderLayout.CENTER); // Attaches the butty JPanel mainwindow.
             
             mainWindow.pack(); // Sizes the frame so that all its contents are at or above their preferred sizes.
             
             // === *** GUI VISUAL SETTINGS *** ===
             mainWindow.setSize(600, 200); // Size of the window (Width by height)
+            kiloByte.setBackground(Color.black); // Sets JPanel butty background to black.
+            kiloByte.setForeground(Color.white);
+            megaByte.setBackground(Color.black); // Sets JPanel butty background to black.
+            megaByte.setForeground(Color.white);
+            gigaByte.setBackground(Color.black); // Sets JPanel butty background to black.
+            gigaByte.setForeground(Color.white);
+            teraByte.setBackground(Color.black); // Sets JPanel butty background to black.
+            teraByte.setForeground(Color.white);
+            radioList.setBackground(Color.black); // Sets JPanel butty background to black.
             butty.setBackground(Color.black); // Sets JPanel butty background to black.
             buttonPump.setBackground(Color.gray); // Sets button background color to gray. (Contrasting colors)
             buttonPump.setForeground(Color.white); // Sets button text color to white. (Contrasting colors)
@@ -75,4 +98,4 @@ public class filePumper // Class head
             mainWindow.setVisible(true); // Make the frame visisble on the screen via execution.
             textBox.setFont(new Font("Arial", Font.ITALIC, 20)); // Changes textBox font to Arial, Italic, and to size 10.
          }
-}
+     }
