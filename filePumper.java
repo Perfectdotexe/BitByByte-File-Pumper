@@ -37,7 +37,7 @@ public class filePumper // Class head
             mainWindow.setLocationRelativeTo(null); // Center JFrame window.
             
             // *** Text Box ***
-            JTextField textBox = new JTextField("Choose a file..."); // Creates new text box with "Choose a file.." as the default text.
+            JTextField textBox = new JTextField(" Input file directory here or click \"Choose file\"..."); // Creates new text box with "Choose a file.." as the default text.
             textBox.setBorder(javax.swing.BorderFactory.createEmptyBorder()); // Removes blue border around text box.
             textBox.setPreferredSize(new Dimension(500,25)); // Resizes text box, so they user can see the file directory.
             textBox.addMouseListener(new MouseAdapter() { // Adds listener to the mouse.
