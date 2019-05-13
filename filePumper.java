@@ -65,7 +65,6 @@ public class filePumper // Class head
             
             mainWindow.pack(); // Sizes the frame so that all its contents are at or above their preferred sizes.
             
-             
             // === *** GUI VISUAL SETTINGS *** ===
             mainWindow.setSize(600, 200); // Size of the window (Width by height)
             mainWindow.setVisible(true); // Make the frame visisble on the screen via execution.
