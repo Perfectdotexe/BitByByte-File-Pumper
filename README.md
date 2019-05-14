@@ -29,7 +29,7 @@
                   **/*,. .....   .*/(*,                    
                   ,,*//**//////***///*.                    
 
-<b>Coded line by line, didn't use any IDE that creates the GUI.</b>
+<b>GUI was coded line by line.</b>
 
 Revisiting a classic tool, the file pumper! For educational uses only!
 Increases the size of a file by adding null hexadecimal value(s) (00) to the end depending on the amount the user wants in KB, MB, GB, or TB.
