@@ -19,6 +19,7 @@ import java.awt.GridBagLayout; // The GridBagLayout class is a flexible layout m
 import java.awt.Component; // A component is an object having a graphical representation that can be displayed on the screen and that can interact with the user.
 import java.awt.Dimension; // The Dimension class encapsulates the width and height of a component (in integer precision) in a single object.
 import javax.swing.JRadioButton; // An implementation of a radio button -- an item that can be selected or deselected, and which displays its state to the user.
+import java.io.File;
 
 //Define object
 public class filePumper // Class head
@@ -37,7 +38,7 @@ public class filePumper // Class head
             mainWindow.setLocationRelativeTo(null); // Center JFrame window.
             
             // *** Text Box ***
-            JTextField textBox = new JTextField(" Input file directory here or click \"Choose file\"..."); // Creates new text box with "Choose a file.." as the default text.
+            JTextField textBox = new JTextField(" Input file directory here or click \"Open File\"..."); // Creates new text box with "Choose a file.." as the default text.
             textBox.setBorder(javax.swing.BorderFactory.createEmptyBorder()); // Removes blue border around text box.
             textBox.setPreferredSize(new Dimension(500,25)); // Resizes text box, so they user can see the file directory.
             textBox.addMouseListener(new MouseAdapter() { // Adds listener to the mouse.
@@ -51,14 +52,16 @@ public class filePumper // Class head
             JPanel openPanel = new JPanel();
             openPanel.setLayout(new BorderLayout());
             
-            JButton opnButt = new JButton("Open");
+            JButton opnButt = new JButton("Open File");
             opnButt.setBorderPainted(false); // Removes border paint.
             opnButt.setFocusPainted(false); // Removes blue focus ring around the button.
             opnButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                JFileChooser openFile = new JFileChooser();
-                  openFile.showOpenDialog(null);
+               openFile.setDialogTitle("Set a Valid File Pathway"); // Changes title of Open File
+               openFile.setFileSelectionMode(JFileChooser.FILES_ONLY);
+               openFile.showOpenDialog(null);
                }
             });
             
@@ -130,6 +133,7 @@ public class filePumper // Class head
             
             mainWindow.setVisible(true); // Make the frame visisble on the screen via execution.
             
+            opnButt.setFont(new Font("Arial", Font.BOLD, 13)); // Changes opnButt font to Arial, Italic, and to size 15.
             textBox.setFont(new Font("Arial", Font.ITALIC, 15)); // Changes textBox font to Arial, Italic, and to size 15.
             buttonPump.setFont(new Font("Arial", Font.BOLD, 13)); // Changes buttonPump font to Arial, Bold, and to size 13.
          }
