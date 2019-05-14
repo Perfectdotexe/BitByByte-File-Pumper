@@ -18,7 +18,7 @@ import java.awt.GridLayout; // The GridLayout class is a layout manager that lay
 import java.awt.GridBagLayout; // The GridBagLayout class is a flexible layout manager that aligns components vertically, horizontally or along their baseline without requiring that the components be of the same size.
 import java.awt.Component; // A component is an object having a graphical representation that can be displayed on the screen and that can interact with the user.
 import java.awt.Dimension; // The Dimension class encapsulates the width and height of a component (in integer precision) in a single object.
-import javax.swing.JRadioButton;
+import javax.swing.JRadioButton; // An implementation of a radio button -- an item that can be selected or deselected, and which displays its state to the user.
 
 //Define object
 public class filePumper // Class head
@@ -47,13 +47,27 @@ public class filePumper // Class head
                }
             });
             
-            // *** Resizing ***
+            // *** File open button ***
+            JPanel openPanel = new JPanel();
+            openPanel.setLayout(new BorderLayout());
+            
+            JButton opnButt = new JButton("Open");
+            opnButt.setBorderPainted(false); // Removes border paint.
+            opnButt.setFocusPainted(false); // Removes blue focus ring around the button.
+            opnButt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+               JFileChooser openFile = new JFileChooser();
+                  openFile.showOpenDialog(null);
+               }
+            });
+            
+            // *** Panel declarations ***
             JPanel texty = new JPanel(); // Creates new JPanel for grid
-            texty.setPreferredSize(new Dimension(400, 40)); // Sets Jpanel to a certain dimensions (Width by height)
+            
             JPanel butty = new JPanel(); // Creates new JPanel for grid
-            butty.setPreferredSize(new Dimension(60, 40)); // Sets Jpanel to a certain dimensions (Width by height)
+            
             JPanel bytePoints = new JPanel(); // Creates new JPanel for grid
-            bytePoints.setPreferredSize(new Dimension(60, 40)); // Sets Jpanel to a certain dimensions (Width by height)
             
             // *** RADIO BUTTONS ***
             JRadioButton kiloByte = new JRadioButton ("Kilobyte(s)");
@@ -71,32 +85,52 @@ public class filePumper // Class head
             JButton buttonPump = new JButton("Pump those hexidecimals baby! (Please check only one radio button)"); // Creates button.
             buttonPump.setBorderPainted(false); // Removes border paint.
             buttonPump.setFocusPainted(false); // Removes blue focus ring around the button.
+            
             texty.add(textBox); // Adds panel to textBox.
             mainWindow.getContentPane().add(texty, BorderLayout.NORTH); // Attaches the texty JPanel mainwindow.
-            butty.add(buttonPump); // Adds panel to buttonPump.
+            
+            butty.add(opnButt); // Adds opnButt to butty Panel.
+            butty.add(buttonPump); // Adds buttonPump to butty Panel.
             mainWindow.getContentPane().add(butty, BorderLayout.SOUTH); // Attaches the butty JPanel mainwindow.
+            
             mainWindow.getContentPane().add(radioList, BorderLayout.CENTER); // Attaches the butty JPanel mainwindow.
             
             mainWindow.pack(); // Sizes the frame so that all its contents are at or above their preferred sizes.
             
             // === *** GUI VISUAL SETTINGS *** ===
             mainWindow.setSize(600, 200); // Size of the window (Width by height)
+            
             kiloByte.setBackground(Color.black); // Sets kiloByte radio background to black.
             kiloByte.setForeground(Color.white); // Sets kiloByte radio text to white.
+            
             megaByte.setBackground(Color.black); // Sets megaByte radio background to black.
             megaByte.setForeground(Color.white); // Sets megaByte radio text to white.
+            
             gigaByte.setBackground(Color.black); // Sets gigaByte radio background to black.
             gigaByte.setForeground(Color.white); // Sets gigaByte radio text to white.
+            
             teraByte.setBackground(Color.black); // Sets teraByte radio background to black.
             teraByte.setForeground(Color.white); // Sets terabyte radio text to white.
+            
             radioList.setBackground(Color.black); // Sets JPanel butty background to black.
+            
             butty.setBackground(Color.black); // Sets JPanel butty background to black.
+            
             buttonPump.setBackground(Color.gray); // Sets button background color to gray. (Contrasting colors)
             buttonPump.setForeground(Color.white); // Sets button text color to white. (Contrasting colors)
+            
+            opnButt.setBackground(Color.gray); // Sets button background color to gray. (Contrasting colors)
+            opnButt.setForeground(Color.white); // Sets button text color to white. (Contrasting colors)
+            
             texty.setBackground(Color.black); // Sets JPanel texty background to black.
+            
             mainWindow.getContentPane().setBackground(Color.black); // Sets Jframe butty background to black.
+            
             butty.requestFocusInWindow(); // Sets focus on button to avoid focus on textField, because it will include "Choose a file..." if user types without clicking the textField.
+            
             mainWindow.setVisible(true); // Make the frame visisble on the screen via execution.
-            textBox.setFont(new Font("Arial", Font.ITALIC, 20)); // Changes textBox font to Arial, Italic, and to size 10.
+            
+            textBox.setFont(new Font("Arial", Font.ITALIC, 15)); // Changes textBox font to Arial, Italic, and to size 15.
+            buttonPump.setFont(new Font("Arial", Font.BOLD, 13)); // Changes buttonPump font to Arial, Bold, and to size 13.
          }
 }
