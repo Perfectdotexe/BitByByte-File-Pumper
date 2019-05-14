@@ -1,9 +1,13 @@
-      // File pumper
-      //*Perfect.exe
-      //*Austin Tapia
-      //*https://github.com/Perfectdotexe
-      //*Website: https://ewhitehat.com/
-      //*Cybersecurity student
+/*
+   Program: File pumper
+   Description: Increases the size of a file by adding null hexadecimal values (00) to the end depending on the amount the user wants in KB, MB, GB, or TB.
+   Last modified: 5/14/19
+   Alias: Perfect.exe
+   Name: Austin Tapia
+   Github: https://github.com/Perfectdotexe
+   Blog: https://ewhitehat.com/
+   *Cybersecurity student
+*/
       
 // Important Java utilities necessary for program to function.
 import java.util.Scanner; // A simple text scanner which can parse primitive types and strings using regular expressions.
@@ -28,7 +32,7 @@ public class filePumper // Class head
          {
             
             Scanner keyboard = new Scanner(System.in); // Creates a Scanner object for keyboard input.
-            String currentUser = System.getProperty("user.name");
+            String currentUser = System.getProperty("user.name"); // Declares string currentUser with the initialization of the current Windows user.
             
             // === *** Graphical User Interface *** ===
             JFrame mainWindow = new JFrame("BitByByte"); // Creates new window with the title "BitByByte"
@@ -119,7 +123,7 @@ public class filePumper // Class head
             teraByte.setBackground(Color.black); // Sets teraByte radio background to black.
             teraByte.setForeground(Color.white); // Sets terabyte radio text to white.
             
-            radioList.setBackground(Color.black); // Sets JPanel butty background to black.
+            radioList.setBackground(Color.black); // Sets JPanel radioList background to black.
             
             butty.setBackground(Color.black); // Sets JPanel butty background to black.
             
