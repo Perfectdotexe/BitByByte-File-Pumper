@@ -28,6 +28,7 @@ public class filePumper // Class head
          {
             
             Scanner keyboard = new Scanner(System.in); // Creates a Scanner object for keyboard input.
+            String currentUser = System.getProperty("user.name");
             
             // === *** Graphical User Interface *** ===
             JFrame mainWindow = new JFrame("BitByByte"); // Creates new window with the title "BitByByte"
@@ -59,9 +60,12 @@ public class filePumper // Class head
             @Override
             public void actionPerformed(ActionEvent arg0) {
                JFileChooser openFile = new JFileChooser();
+               openFile.setCurrentDirectory(new java.io.File("C:\\Users\\" + currentUser));
                openFile.setDialogTitle("Set a Valid File Pathway"); // Changes title of Open File
                openFile.setFileSelectionMode(JFileChooser.FILES_ONLY);
-               openFile.showOpenDialog(null);
+               if (openFile.showOpenDialog(opnButt) == JFileChooser.APPROVE_OPTION){
+               textBox.setText(openFile.getSelectedFile().getAbsolutePath());
+                }
                }
             });
             
