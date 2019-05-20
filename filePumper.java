@@ -12,7 +12,6 @@ Blog: https://ewhitehat.com/
 package filePumper;
 
 //Important Java utilities necessary for program to function.
-import java.util.Scanner; // A simple text scanner which can parse primitive types and strings using regular expressions.
 import java.io.OutputStream; // This abstract class is the superclass of all classes representing an output stream of bytes. An output stream accepts output bytes and sends them to some sink. 
 import java.io.FileOutputStream;
 import javax.swing.*; // Open entire javax.swing library for the GUI.
@@ -28,7 +27,6 @@ import java.awt.Dimension; // The Dimension class encapsulates the width and hei
 import javax.swing.JRadioButton; // An implementation of a radio button -- an item that can be selected or deselected, and which displays its state to the user.
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import java.awt.*;
 
 //Define object
 public class filePumper // Class head
@@ -48,27 +46,23 @@ public class filePumper // Class head
          mainWindow.setLocationRelativeTo(null); // Center JFrame window.
 
          // *** Text Box ***
-         JTextField textBox = new JTextField(" Input file directory here or click \"Open File\"... (Note: 1000KB = 1MB and so forth)"); // Creates new text box with "Choose a file.." as the default text.
+         JTextField textBox = new JTextField(" Input file directory here or click \"Open File\"..."); // Creates new text box with "Choose a file.." as the default text.
+         textBox.setHorizontalAlignment(JTextField.CENTER);
          textBox.setBorder(javax.swing.BorderFactory.createEmptyBorder()); // Removes blue border around text box.
          textBox.setPreferredSize(new Dimension(500,25)); // Resizes text box, so they user can see the file directory.
          textBox.addMouseListener(new MouseAdapter() { // Adds listener to the mouse.
          @Override // Overrides parent class.
          public void mouseClicked(MouseEvent e) { // Declares mouse event "e" when mouse is clicked.
          textBox.setText(""); // Sets text value to blank.
+         textBox.setHorizontalAlignment(JTextField.LEFT);
             }
          });
          
          // *** Text box for value ***
-         JTextField valueBox = new JTextField("Value increment");
-         valueBox.setHorizontalAlignment(JTextField.CENTER);
-         valueBox.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+         JSpinner valueBox = new JSpinner();
          valueBox.setPreferredSize(new Dimension(114,25));
-         valueBox.addMouseListener(new MouseAdapter() {
-             @Override
-             public void mouseClicked(MouseEvent e) {
-             valueBox.setText("");
-                }
-             });
+         valueBox.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+         valueBox.setModel(new javax.swing.SpinnerNumberModel(1, 1, 1000, 1)); // Initial = 0, Minimum= 0, Maximum = 1000, and Size per step = 1.
          
          // *** File open button ***
          JPanel openPanel = new JPanel();
@@ -85,6 +79,7 @@ public class filePumper // Class head
             openFile.setDialogTitle("Set a Valid File Pathway"); // Changes title of Open File
             openFile.setFileSelectionMode(JFileChooser.FILES_ONLY);
             if (openFile.showOpenDialog(opnButt) == JFileChooser.APPROVE_OPTION){
+            textBox.setHorizontalAlignment(JTextField.LEFT);
             textBox.setText(openFile.getSelectedFile().getAbsolutePath());
              }
             }
@@ -95,8 +90,6 @@ public class filePumper // Class head
          JPanel texty = new JPanel(); // Creates new JPanel for grid
          
          JPanel butty = new JPanel(); // Creates new JPanel for grid
-         
-         JPanel bytePoints = new JPanel(); // Creates new JPanel for grid
          
          // *** RADIO BUTTONS ***
          JRadioButton kiloByte = new JRadioButton ("Kilobyte(s)");
@@ -122,11 +115,25 @@ public class filePumper // Class head
          buttonPump.setBorderPainted(false); // Removes border paint.
          buttonPump.setFocusPainted(false); // Removes blue focus ring around the button.
          
+         JButton buttonInfo = new JButton("More information"); // Creates button.
+         buttonInfo.setBorderPainted(false); // Removes border paint.
+         buttonInfo.setFocusPainted(false); // Removes blue focus ring around the button.
+         buttonInfo.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 JOptionPane.showMessageDialog(null, "The following sizes will be converted from the input value*"
+                 		+ "\n8 BITS = 1 BYTE" + "\n1000 BYTE = 1 KB" + "\n1000 KB = 1 MB" + "\n1000 MB = 1 GB" + "\n1000 GB = 1 TB"
+                		 + "\nNote: Step increment of 1 input value = 1 KB" + "\n* Minimum: 1 and the Maximum: 1,000", "How to use BitByByte", JOptionPane.INFORMATION_MESSAGE);
+             }
+         });
+         
+         
          texty.add(textBox); // Adds textBox to panel.
          mainWindow.getContentPane().add(texty, BorderLayout.NORTH); // Attaches the texty JPanel mainwindow.
          
          butty.add(opnButt); // Adds opnButt to butty Panel.
          butty.add(buttonPump); // Adds buttonPump to butty Panel.
+         butty.add(buttonInfo); // Adds buttonInfo to butty Panel.
          
          mainWindow.getContentPane().add(butty, BorderLayout.SOUTH); // Attaches the butty JPanel mainwindow.
          
@@ -159,6 +166,9 @@ public class filePumper // Class head
          opnButt.setBackground(Color.gray); // Sets button background color to gray. (Contrasting colors)
          opnButt.setForeground(Color.white); // Sets button text color to white. (Contrasting colors)
          
+         buttonInfo.setBackground(Color.gray); // Sets button background color to gray. (Contrasting colors)
+         buttonInfo.setForeground(Color.white); // Sets button text color to white. (Contrasting colors)
+         
          texty.setBackground(Color.black); // Sets JPanel texty background to black.
          
          mainWindow.getContentPane().setBackground(Color.black); // Sets Jframe butty background to black.
@@ -168,6 +178,7 @@ public class filePumper // Class head
          mainWindow.setVisible(true); // Make the frame visisble on the screen via execution.
          
          opnButt.setFont(new Font("Arial", Font.BOLD, 13)); // Changes opnButt font to Arial, Italic, and to size 15.
+         buttonInfo.setFont(new Font("Arial", Font.BOLD, 13)); // Changes opnButt font to Arial, Italic, and to size 15.
          textBox.setFont(new Font("Arial", Font.ITALIC, 13)); // Changes textBox font to Arial, Italic, and to size 15.
          valueBox.setFont(new Font("Arial", Font.ITALIC, 13)); // Changes valueBox font to Arial, Italic, and to size 15.
          buttonPump.setFont(new Font("Arial", Font.BOLD, 13)); // Changes buttonPump font to Arial, Bold, and to size 13.
