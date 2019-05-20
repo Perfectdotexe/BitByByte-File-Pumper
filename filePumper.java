@@ -111,7 +111,7 @@ public class filePumper // Class head
          radioList.add(teraByte);
          
          // *** Graphical User Interface Buttons/Textbox ***
-         JButton buttonPump = new JButton("Pump those hexidecimals baby!"); // Creates button.
+         JButton buttonPump = new JButton("Pump those hexidecimals!"); // Creates button.
          buttonPump.setBorderPainted(false); // Removes border paint.
          buttonPump.setFocusPainted(false); // Removes blue focus ring around the button.
          
@@ -121,9 +121,10 @@ public class filePumper // Class head
          buttonInfo.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(java.awt.event.ActionEvent evt) {
-                 JOptionPane.showMessageDialog(null, "The following sizes will be converted from the input value*"
+                 JOptionPane.showMessageDialog(null, "Data Measurement Chart*"
                  		+ "\n8 BITS = 1 BYTE" + "\n1000 BYTE = 1 KB" + "\n1000 KB = 1 MB" + "\n1000 MB = 1 GB" + "\n1000 GB = 1 TB"
-                		 + "\nNote: Step increment of 1 input value = 1 KB" + "\n* Minimum: 1 and the Maximum: 1,000", "How to use BitByByte", JOptionPane.INFORMATION_MESSAGE);
+                		 + "\nNote: Step increment of 1 input value = 1 KB" + "\n* Minimum: 1 and the Maximum: 1,000"
+                 		+ "\nMade by: https://github.com/Perfectdotexe", "How to use BitByByte", JOptionPane.INFORMATION_MESSAGE);
              }
          });
          
