@@ -12,21 +12,13 @@ Blog: https://ewhitehat.com/
 package filePumper;
 
 //Important Java utilities necessary for program to function.
-import java.io.OutputStream; // This abstract class is the superclass of all classes representing an output stream of bytes. An output stream accepts output bytes and sends them to some sink. 
-import java.io.FileOutputStream;
 import javax.swing.*; // Open entire javax.swing library for the GUI.
 import java.awt.Font; // The Font class represents fonts, which are used to render text in a visible way.
 import java.awt.Color; // The Color class is used to encapsulate colors in the default sRGB color space or colors in arbitrary color spaces identified by a ColorSpace.
 import java.awt.BorderLayout; // A border layout lays out a container, arranging and resizing its components to fit in five regions: north, south, east, west, and center.
-import java.awt.FlowLayout; // Flow layouts are typically used to arrange buttons in a panel. It arranges buttons horizontally until no more buttons fit on the same line.
 import java.awt.event.*; // Opens entire java.awt.event library. Imported for MouseAdapter, MouseEvent, and ActionListener.
-import java.awt.GridLayout; // The GridLayout class is a layout manager that lays out a container's components in a rectangular grid.
-import java.awt.GridBagLayout; // The GridBagLayout class is a flexible layout manager that aligns components vertically, horizontally or along their baseline without requiring that the components be of the same size.
-import java.awt.Component; // A component is an object having a graphical representation that can be displayed on the screen and that can interact with the user.
 import java.awt.Dimension; // The Dimension class encapsulates the width and height of a component (in integer precision) in a single object.
 import javax.swing.JRadioButton; // An implementation of a radio button -- an item that can be selected or deselected, and which displays its state to the user.
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 //Define object
 public class filePumper // Class head
@@ -40,13 +32,13 @@ public class filePumper // Class head
          // === *** Graphical User Interface *** ===
          JFrame mainWindow = new JFrame("BitByByte"); // Creates new window with the title "BitByByte"
          mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Exit the program on close of the frame.
-         ImageIcon icon = new ImageIcon("faucet.jpg"); // Creates new ImageIcon object.
-         mainWindow.setIconImage(icon.getImage()); // Sets icon from ImageIcon object value.
+         ImageIcon iconFaucet = new ImageIcon("faucet.jpg"); // Creates new ImageIcon object.
+         mainWindow.setIconImage(iconFaucet.getImage()); // Sets icon from ImageIcon object value.
          mainWindow.setResizable(false); // Disables re-sizing.
          mainWindow.setLocationRelativeTo(null); // Center JFrame window.
-
+         
          // *** Text Box ***
-         JTextField textBox = new JTextField(" Input file directory here or click \"Open File\"..."); // Creates new text box with "Choose a file.." as the default text.
+         JTextField textBox = new JTextField("Input a valid file directory here or click \"Open File\"..."); // Creates new text box with "Choose a file.." as the default text.
          textBox.setHorizontalAlignment(JTextField.CENTER);
          textBox.setBorder(javax.swing.BorderFactory.createEmptyBorder()); // Removes blue border around text box.
          textBox.setPreferredSize(new Dimension(500,25)); // Resizes text box, so they user can see the file directory.
@@ -62,7 +54,7 @@ public class filePumper // Class head
          JSpinner valueBox = new JSpinner();
          valueBox.setPreferredSize(new Dimension(114,25));
          valueBox.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-         valueBox.setModel(new javax.swing.SpinnerNumberModel(1, 1, 1000, 1)); // Initial = 0, Minimum= 0, Maximum = 1000, and Size per step = 1.
+         valueBox.setModel(new javax.swing.SpinnerNumberModel(1, 1, 999, 1)); // Initial = 1, Minimum= 1, Maximum = 999, and Size per step = 1.
          
          // *** File open button ***
          JPanel openPanel = new JPanel();
@@ -123,7 +115,7 @@ public class filePumper // Class head
              public void actionPerformed(java.awt.event.ActionEvent evt) {
                  JOptionPane.showMessageDialog(null, "Data Measurement Chart*"
                  		+ "\n8 BITS = 1 BYTE" + "\n1000 BYTE = 1 KB" + "\n1000 KB = 1 MB" + "\n1000 MB = 1 GB" + "\n1000 GB = 1 TB"
-                		 + "\nNote: Step increment of 1 input value = 1 KB" + "\n* Minimum: 1 and the Maximum: 1,000"
+                		 + "\nExample: Step increment of 1 input value = 1 KB" + "\n* Minimum: 1 and the Maximum: 999 for input value"
                  		+ "\nMade by: https://github.com/Perfectdotexe", "How to use BitByByte", JOptionPane.INFORMATION_MESSAGE);
              }
          });
