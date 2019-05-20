@@ -62,7 +62,7 @@ public class filePumper // Class head
          JTextField valueBox = new JTextField("Value increment");
          valueBox.setHorizontalAlignment(JTextField.CENTER);
          valueBox.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-         valueBox.setPreferredSize(new Dimension(100,25));
+         valueBox.setPreferredSize(new Dimension(114,25));
          valueBox.addMouseListener(new MouseAdapter() {
              @Override
              public void mouseClicked(MouseEvent e) {
