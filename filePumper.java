@@ -28,7 +28,7 @@ import java.awt.Dimension; // The Dimension class encapsulates the width and hei
 import javax.swing.JRadioButton; // An implementation of a radio button -- an item that can be selected or deselected, and which displays its state to the user.
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+import java.awt.*;
 
 //Define object
 public class filePumper // Class head
@@ -46,9 +46,9 @@ public class filePumper // Class head
          mainWindow.setIconImage(icon.getImage()); // Sets icon from ImageIcon object value.
          mainWindow.setResizable(false); // Disables re-sizing.
          mainWindow.setLocationRelativeTo(null); // Center JFrame window.
-         
+
          // *** Text Box ***
-         JTextField textBox = new JTextField(" Input file directory here or click \"Open File\"..."); // Creates new text box with "Choose a file.." as the default text.
+         JTextField textBox = new JTextField(" Input file directory here or click \"Open File\"... (Note: 1000KB = 1MB and so forth)"); // Creates new text box with "Choose a file.." as the default text.
          textBox.setBorder(javax.swing.BorderFactory.createEmptyBorder()); // Removes blue border around text box.
          textBox.setPreferredSize(new Dimension(500,25)); // Resizes text box, so they user can see the file directory.
          textBox.addMouseListener(new MouseAdapter() { // Adds listener to the mouse.
@@ -57,6 +57,18 @@ public class filePumper // Class head
          textBox.setText(""); // Sets text value to blank.
             }
          });
+         
+         // *** Text box for value ***
+         JTextField valueBox = new JTextField("Value increment");
+         valueBox.setHorizontalAlignment(JTextField.CENTER);
+         valueBox.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+         valueBox.setPreferredSize(new Dimension(100,25));
+         valueBox.addMouseListener(new MouseAdapter() {
+             @Override
+             public void mouseClicked(MouseEvent e) {
+             valueBox.setText("");
+                }
+             });
          
          // *** File open button ***
          JPanel openPanel = new JPanel();
@@ -99,21 +111,23 @@ public class filePumper // Class head
          groupButton.add(teraByte);
          
          JPanel radioList = new JPanel(); // Creates JPanel for GUI.
+         radioList.add(valueBox);
          radioList.add(kiloByte);
          radioList.add(megaByte);
          radioList.add(gigaByte);
          radioList.add(teraByte);
          
          // *** Graphical User Interface Buttons/Textbox ***
-         JButton buttonPump = new JButton("Pump those hexidecimals baby! (Please check only one radio button)"); // Creates button.
+         JButton buttonPump = new JButton("Pump those hexidecimals baby!"); // Creates button.
          buttonPump.setBorderPainted(false); // Removes border paint.
          buttonPump.setFocusPainted(false); // Removes blue focus ring around the button.
          
-         texty.add(textBox); // Adds panel to textBox.
+         texty.add(textBox); // Adds textBox to panel.
          mainWindow.getContentPane().add(texty, BorderLayout.NORTH); // Attaches the texty JPanel mainwindow.
          
          butty.add(opnButt); // Adds opnButt to butty Panel.
          butty.add(buttonPump); // Adds buttonPump to butty Panel.
+         
          mainWindow.getContentPane().add(butty, BorderLayout.SOUTH); // Attaches the butty JPanel mainwindow.
          
          mainWindow.getContentPane().add(radioList, BorderLayout.CENTER); // Attaches the butty JPanel mainwindow.
@@ -121,7 +135,7 @@ public class filePumper // Class head
          mainWindow.pack(); // Sizes the frame so that all its contents are at or above their preferred sizes.
          
          // === *** GUI VISUAL SETTINGS *** ===
-         mainWindow.setSize(600, 200); // Size of the window (Width by height)
+         mainWindow.setSize(600, 150); // Size of the window (Width by height)
          
          kiloByte.setBackground(Color.black); // Sets kiloByte radio background to black.
          kiloByte.setForeground(Color.white); // Sets kiloByte radio text to white.
@@ -154,7 +168,8 @@ public class filePumper // Class head
          mainWindow.setVisible(true); // Make the frame visisble on the screen via execution.
          
          opnButt.setFont(new Font("Arial", Font.BOLD, 13)); // Changes opnButt font to Arial, Italic, and to size 15.
-         textBox.setFont(new Font("Arial", Font.ITALIC, 15)); // Changes textBox font to Arial, Italic, and to size 15.
+         textBox.setFont(new Font("Arial", Font.ITALIC, 13)); // Changes textBox font to Arial, Italic, and to size 15.
+         valueBox.setFont(new Font("Arial", Font.ITALIC, 13)); // Changes valueBox font to Arial, Italic, and to size 15.
          buttonPump.setFont(new Font("Arial", Font.BOLD, 13)); // Changes buttonPump font to Arial, Bold, and to size 13.
          
       }
