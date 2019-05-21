@@ -19,15 +19,21 @@ import java.awt.BorderLayout; // A border layout lays out a container, arranging
 import java.awt.event.*; // Opens entire java.awt.event library. Imported for MouseAdapter, MouseEvent, and ActionListener.
 import java.awt.Dimension; // The Dimension class encapsulates the width and height of a component (in integer precision) in a single object.
 import javax.swing.JRadioButton; // An implementation of a radio button -- an item that can be selected or deselected, and which displays its state to the user.
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
+import java.io.File;
 
 //Define object
 public class filePumper // Class head
 {
-   public static void main(String[] args) // Main method
+   public static void main(String[] args) throws IOException, FileNotFoundException // Main method
       {
          
          String currentUser = System.getProperty("user.name"); // Declares string currentUser with the initialization of the current Windows user.
-         byte[] nullHex = {00};
         
          // === *** Graphical User Interface *** ===
          JFrame mainWindow = new JFrame("BitByByte"); // Creates new window with the title "BitByByte"
@@ -55,6 +61,7 @@ public class filePumper // Class head
          valueBox.setPreferredSize(new Dimension(114,25));
          valueBox.setBorder(javax.swing.BorderFactory.createEmptyBorder());
          valueBox.setModel(new javax.swing.SpinnerNumberModel(1, 1, 999, 1)); // Initial = 1, Minimum= 1, Maximum = 999, and Size per step = 1.
+         int valueUserMain = (Integer) valueBox.getValue();
          
          // *** File open button ***
          JPanel openPanel = new JPanel();
@@ -106,6 +113,39 @@ public class filePumper // Class head
          JButton buttonPump = new JButton("Pump those hexidecimals!"); // Creates button.
          buttonPump.setBorderPainted(false); // Removes border paint.
          buttonPump.setFocusPainted(false); // Removes blue focus ring around the button.
+         buttonPump.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 String textBoxString = textBox.getText();
+                 OutputStream hexPush = null;
+                 String repeat = ("00").repeat(100); // Repeats based on value input.
+                 repeat = repeat.replaceAll("..(?!$)", "$0 "); // Add spacing between 00 00
+                 String[] parts = repeat.split(" ");
+                 String part1 = parts[0];
+                 String part2 = parts[1];
+                 System.out.println(part1 + part2);
+                 int foo = Integer.parseInt(part1 + part2);
+         	DataOutputStream dataOutputStream = null;
+			try {
+				dataOutputStream = new DataOutputStream(new FileOutputStream("C:\\Users\\Perfectdotexe\\Desktop\\dog.txt"));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+         	try {
+				dataOutputStream.write(foo);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}            //byte data
+			try {
+				dataOutputStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+             }
+             });
          
          JButton buttonInfo = new JButton("More information"); // Creates button.
          buttonInfo.setBorderPainted(false); // Removes border paint.
