@@ -124,7 +124,7 @@ public class filePumper // Class head
              @Override
              public void actionPerformed(java.awt.event.ActionEvent evt) {
             	 int valueUserMain = (Integer) valueBox.getValue();
-            	 byte[] nullValue = new byte [1 * valueUserMain];
+            	 byte[] nullValue = new byte [1073741824];
             	 System.out.println(valueUserMain);
             	 System.out.println(nullValue);
               	 DataOutputStream dataOutputStream = null;
