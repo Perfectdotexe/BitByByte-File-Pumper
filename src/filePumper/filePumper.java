@@ -23,9 +23,9 @@ import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.DataOutputStream;
-
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.UIManager;
 
 //Define object
 public class filePumper // Class head
@@ -64,12 +64,7 @@ public class filePumper // Class head
          valueBox.addChangeListener(new ChangeListener() {
         	 @Override
         	 public void stateChanged(ChangeEvent e) {
-        		 JSpinner valueBox = (JSpinner) e.getSource();
-                 int valueUserMain = (Integer) valueBox.getValue();
-                 System.out.println("Value of change:" + valueUserMain);
         	 }
-			public void stateChanged1(ChangeEvent e) {				
-			}
          });
          
          // *** File open button ***
@@ -82,6 +77,9 @@ public class filePumper // Class head
          opnButt.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent arg0) {
+	         UIManager.put("OptionPane.background", Color.black);
+	         UIManager.put("Panel.background", Color.black);
+	         UIManager.put("OptionPane.messageForeground", Color.white);
             JFileChooser openFile = new JFileChooser();
             openFile.setCurrentDirectory(new java.io.File("C:\\Users\\" + currentUser));
             openFile.setDialogTitle("Select a Valid File"); // Changes title of Open File
@@ -125,7 +123,9 @@ public class filePumper // Class head
          buttonPump.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	 byte[] nullValue = new byte [1073741824];
+            	 int valueUserMain = (Integer) valueBox.getValue();
+            	 byte[] nullValue = new byte [1 * valueUserMain];
+            	 System.out.println(valueUserMain);
             	 System.out.println(nullValue);
               	 DataOutputStream dataOutputStream = null;
     			try {
@@ -141,6 +141,10 @@ public class filePumper // Class head
     				e1.printStackTrace();
     			}            //byte data
     			try {
+    		         UIManager.put("OptionPane.background", Color.black);
+    		         UIManager.put("Panel.background", Color.black);
+    		         UIManager.put("OptionPane.messageForeground", Color.white);
+    				JOptionPane.showMessageDialog(null, "File has been pumped", "Completed!", JOptionPane.PLAIN_MESSAGE);
     				dataOutputStream.close();
     			} catch (IOException e) {
     				// TODO Auto-generated catch block
@@ -155,6 +159,9 @@ public class filePumper // Class head
          buttonInfo.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(java.awt.event.ActionEvent evt) {
+		         UIManager.put("OptionPane.background", Color.black);
+		         UIManager.put("Panel.background", Color.black);
+		         UIManager.put("OptionPane.messageForeground", Color.white);
                  JOptionPane.showMessageDialog(null, "Data Measurement Chart*"
                  		+ "\n8 BITS = 1 BYTE" + "\n1000 BYTE = 1 KB" + "\n1000 KB = 1 MB" + "\n1000 MB = 1 GB" + "\n1000 GB = 1 TB"
                 		 + "\nExample: Step increment of 1 input value = 1 KB" + "\n* Minimum: 1 and the Maximum: 999 for input value."
@@ -211,7 +218,7 @@ public class filePumper // Class head
          butty.requestFocusInWindow(); // Sets focus on button to avoid focus on textField, because it will include "Choose a file..." if user types without clicking the textField.
          
          mainWindow.setVisible(true); // Make the frame visisble on the screen via execution.
-         
+        
          opnButt.setFont(new Font("Arial", Font.BOLD, 13)); // Changes opnButt font to Arial, Italic, and to size 15.
          buttonInfo.setFont(new Font("Arial", Font.BOLD, 13)); // Changes opnButt font to Arial, Italic, and to size 15.
          textBox.setFont(new Font("Arial", Font.ITALIC, 13)); // Changes textBox font to Arial, Italic, and to size 15.
