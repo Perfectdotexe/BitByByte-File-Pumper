@@ -20,13 +20,12 @@ import java.awt.event.*; // Opens entire java.awt.event library. Imported for Mo
 import java.awt.Dimension; // The Dimension class encapsulates the width and height of a component (in integer precision) in a single object.
 import javax.swing.JRadioButton; // An implementation of a radio button -- an item that can be selected or deselected, and which displays its state to the user.
 import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
-import java.io.File;
-import java.util.Arrays;
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 //Define object
 public class filePumper // Class head
@@ -62,7 +61,16 @@ public class filePumper // Class head
          valueBox.setPreferredSize(new Dimension(114,25));
          valueBox.setBorder(javax.swing.BorderFactory.createEmptyBorder());
          valueBox.setModel(new javax.swing.SpinnerNumberModel(1, 1, 999, 1)); // Initial = 1, Minimum= 1, Maximum = 999, and Size per step = 1.
-         int valueUserMain = (Integer) valueBox.getValue();
+         valueBox.addChangeListener(new ChangeListener() {
+        	 @Override
+        	 public void stateChanged(ChangeEvent e) {
+        		 JSpinner valueBox = (JSpinner) e.getSource();
+                 int valueUserMain = (Integer) valueBox.getValue();
+                 System.out.println("Value of change:" + valueUserMain);
+        	 }
+			public void stateChanged1(ChangeEvent e) {				
+			}
+         });
          
          // *** File open button ***
          JPanel openPanel = new JPanel();
@@ -121,7 +129,7 @@ public class filePumper // Class head
             	 System.out.println(nullValue);
               	 DataOutputStream dataOutputStream = null;
     			try {
-    				dataOutputStream = new DataOutputStream(new FileOutputStream("C:\\Users\\Perfectdotexe\\Desktop\\dog.txt"));
+    				dataOutputStream = new DataOutputStream(new FileOutputStream("C:\\Users\\Perfectdotexe\\Desktop\\grumpycat.jpg", true));
     			} catch (FileNotFoundException e) {
     				// TODO Auto-generated catch block
     				e.printStackTrace();
