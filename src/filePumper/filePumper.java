@@ -139,7 +139,7 @@ public class filePumper // Class head
     			} catch (IOException e1) {
     				// TODO Auto-generated catch block
     				e1.printStackTrace();
-    			}            //byte data
+    			}
     			try {
     		         UIManager.put("OptionPane.background", Color.black);
     		         UIManager.put("Panel.background", Color.black);
