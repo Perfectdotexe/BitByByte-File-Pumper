@@ -1,7 +1,7 @@
 /*
 Program: File pumper
 Description: Increases the size of a file by adding null hexadecimal values (00) to the end depending on the amount the user wants in KB, MB, GB, or TB.
-Last modified: 5/24/19
+Last modified: 5/14/19
 Alias: Perfect.exe
 Name: Austin Tapia
 Github: https://github.com/Perfectdotexe
@@ -124,22 +124,22 @@ public class filePumper // Class head
              @Override
              public void actionPerformed(java.awt.event.ActionEvent evt) {
             	 int valueUserMain = (Integer) valueBox.getValue();
+            	 int I = (Integer) 0;
             	 byte[] nullValue = new byte [1073741824];
-            	 System.out.println(valueUserMain);
-            	 System.out.println(nullValue);
               	 DataOutputStream dataOutputStream = null;
     			try {
-    				dataOutputStream = new DataOutputStream(new FileOutputStream("C:\\Users\\Perfectdotexe\\Desktop\\grumpycat.jpg", true));
+    				dataOutputStream = new DataOutputStream(new FileOutputStream("C:\\Users\\Perfectdotexe\\Desktop\\nickprosper.txt", true));
     			} catch (FileNotFoundException e) {
-    				// TODO Auto-generated catch block
     				e.printStackTrace();
     			}
+           	 	do {
              	try {
+             		for (int i = 0; i < valueUserMain; ++i)
     				dataOutputStream.write(nullValue);
     			} catch (IOException e1) {
-    				// TODO Auto-generated catch block
     				e1.printStackTrace();
     			}
+           	 	} while (I == valueUserMain);
     			try {
     		         UIManager.put("OptionPane.background", Color.black);
     		         UIManager.put("Panel.background", Color.black);
@@ -147,7 +147,6 @@ public class filePumper // Class head
     				JOptionPane.showMessageDialog(null, "File has been pumped", "Completed!", JOptionPane.PLAIN_MESSAGE);
     				dataOutputStream.close();
     			} catch (IOException e) {
-    				// TODO Auto-generated catch block
     				e.printStackTrace();
     			}
                  }
