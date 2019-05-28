@@ -3,6 +3,8 @@
   <img src="images/example.gif">
 </p>
 
+<b>Currently in development</b>
+
 <b>Revisiting a classic tool, the file pumper! For educational uses only, I am not responsible for any malicious acts.</b>
 
 Purpose:
