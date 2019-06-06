@@ -1,7 +1,7 @@
 /*
 Program: File pumper
 Description: Increases the size of a file by adding null hexadecimal values (00) to the end depending on the amount the user wants in KB, MB, GB, or TB.
-Last modified: 5/14/19
+Last modified: 6/6/19
 Alias: Perfect.exe
 Name: Austin Tapia
 Github: https://github.com/Perfectdotexe
@@ -26,13 +26,17 @@ import java.io.DataOutputStream;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.UIManager;
+import java.util.concurrent.atomic.AtomicInteger;
 
 //Define object
 public class filePumper // Class head
 {
-   public static void main(String[] args) throws IOException, FileNotFoundException // Main method
+	
+public static void main(String[] args) throws IOException, FileNotFoundException // Main method
       {
          
+		 String finalValue;
+	
          String currentUser = System.getProperty("user.name"); // Declares string currentUser with the initialization of the current Windows user.
         
          // === *** Graphical User Interface *** ===
@@ -77,9 +81,9 @@ public class filePumper // Class head
          opnButt.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent arg0) {
-	         UIManager.put("OptionPane.background", Color.black);
-	         UIManager.put("Panel.background", Color.black);
-	         UIManager.put("OptionPane.messageForeground", Color.white);
+	        UIManager.put("OptionPane.background", Color.black);
+	        UIManager.put("Panel.background", Color.black);
+	        UIManager.put("OptionPane.messageForeground", Color.white);
             JFileChooser openFile = new JFileChooser();
             openFile.setCurrentDirectory(new java.io.File("C:\\Users\\" + currentUser));
             openFile.setDialogTitle("Select a Valid File"); // Changes title of Open File
@@ -98,23 +102,49 @@ public class filePumper // Class head
          JPanel butty = new JPanel(); // Creates new JPanel for grid
          
          // *** RADIO BUTTONS ***
+         int multValue = 1;
+         int megaValue = 1048576;
+         int gigaValue =  1073741824;
+         AtomicInteger x = new AtomicInteger(0);
+         
          JRadioButton kiloByte = new JRadioButton ("Kilobyte(s)");
+         kiloByte.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+            	 x.set (multValue);
+            	 System.out.println(x);
+             }
+         });
+         
          JRadioButton megaByte = new JRadioButton ("Megabyte(s)");
+         megaByte.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+            	 x.set (multValue * megaValue);
+            	 System.out.println(x);
+             }
+         });
+         
          JRadioButton gigaByte = new JRadioButton ("Gigabyte(s)");
-         JRadioButton teraByte = new JRadioButton ("Terabyte(s)");
+         gigaByte.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+            	 x.set (multValue * gigaValue);
+            	 System.out.println(x);
+
+             }
+         });
 
          ButtonGroup groupButton = new ButtonGroup(); // Groups radio buttons which allows only one selection.
          groupButton.add(kiloByte);
          groupButton.add(megaByte);
          groupButton.add(gigaByte);
-         groupButton.add(teraByte);
          
          JPanel radioList = new JPanel(); // Creates JPanel for GUI.
          radioList.add(valueBox);
          radioList.add(kiloByte);
          radioList.add(megaByte);
          radioList.add(gigaByte);
-         radioList.add(teraByte);
          
          // *** Graphical User Interface Buttons/Textbox ***
          JButton buttonPump = new JButton("Pump those hexidecimals!"); // Creates button.
@@ -125,7 +155,7 @@ public class filePumper // Class head
              public void actionPerformed(java.awt.event.ActionEvent evt) {
             	 int valueUserMain = (Integer) valueBox.getValue();
             	 int I = (Integer) 0;
-            	 byte[] nullValue = new byte [1073741824];
+            	 byte[] nullValue = new byte [1];
               	 DataOutputStream dataOutputStream = null;
     			try {
     				dataOutputStream = new DataOutputStream(new FileOutputStream("C:\\Users\\Perfectdotexe\\Desktop\\nickprosper.txt", true));
@@ -193,9 +223,6 @@ public class filePumper // Class head
          
          gigaByte.setBackground(Color.black); // Sets gigaByte radio background to black.
          gigaByte.setForeground(Color.white); // Sets gigaByte radio text to white.
-         
-         teraByte.setBackground(Color.black); // Sets teraByte radio background to black.
-         teraByte.setForeground(Color.white); // Sets terabyte radio text to white.
          
          radioList.setBackground(Color.black); // Sets JPanel radioList background to black.
          
