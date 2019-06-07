@@ -1,7 +1,7 @@
 /*
 Program: File pumper
 Description: Increases the size of a file by adding null hexadecimal values (00) to the end depending on the amount the user wants in KB, MB, GB, or TB.
-Last modified: 6/7/19
+Last modified: 5/14/19
 Alias: Perfect.exe
 Name: Austin Tapia
 Github: https://github.com/Perfectdotexe
@@ -34,9 +34,7 @@ public class filePumper // Class head
 	
 public static void main(String[] args) throws IOException, FileNotFoundException // Main method
       {
-         
-		 String finalValue;
-	
+
          String currentUser = System.getProperty("user.name"); // Declares string currentUser with the initialization of the current Windows user.
         
          // === *** Graphical User Interface *** ===
