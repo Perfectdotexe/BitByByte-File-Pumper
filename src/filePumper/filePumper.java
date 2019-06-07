@@ -1,7 +1,7 @@
 /*
 Program: File pumper
 Description: Increases the size of a file by adding null hexadecimal values (00) to the end depending on the amount the user wants in KB, MB, GB, or TB.
-Last modified: 6/6/19
+Last modified: 6/7/19
 Alias: Perfect.exe
 Name: Austin Tapia
 Github: https://github.com/Perfectdotexe
@@ -112,7 +112,6 @@ public static void main(String[] args) throws IOException, FileNotFoundException
              @Override
              public void actionPerformed(ActionEvent e) {
             	 x.set (multValue);
-            	 System.out.println(x);
              }
          });
          
@@ -121,7 +120,6 @@ public static void main(String[] args) throws IOException, FileNotFoundException
              @Override
              public void actionPerformed(ActionEvent e) {
             	 x.set (multValue * megaValue);
-            	 System.out.println(x);
              }
          });
          
@@ -130,8 +128,14 @@ public static void main(String[] args) throws IOException, FileNotFoundException
              @Override
              public void actionPerformed(ActionEvent e) {
             	 x.set (multValue * gigaValue);
-            	 System.out.println(x);
-
+             }
+         });
+         
+         JRadioButton teraByte = new JRadioButton ("Terabyte(s)");
+         teraByte.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+            	 x.set (multValue);
              }
          });
 
@@ -139,12 +143,14 @@ public static void main(String[] args) throws IOException, FileNotFoundException
          groupButton.add(kiloByte);
          groupButton.add(megaByte);
          groupButton.add(gigaByte);
+         groupButton.add(teraByte);
          
          JPanel radioList = new JPanel(); // Creates JPanel for GUI.
          radioList.add(valueBox);
          radioList.add(kiloByte);
          radioList.add(megaByte);
          radioList.add(gigaByte);
+         radioList.add(teraByte);
          
          // *** Graphical User Interface Buttons/Textbox ***
          JButton buttonPump = new JButton("Pump those hexidecimals!"); // Creates button.
@@ -164,7 +170,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
     			}
            	 	do {
              	try {
-             		for (int i = 0; i < valueUserMain; ++i)
+             		for (int i = 0; i < valueUserMain * x.get(); ++i)
     				dataOutputStream.write(nullValue);
     			} catch (IOException e1) {
     				e1.printStackTrace();
@@ -223,6 +229,9 @@ public static void main(String[] args) throws IOException, FileNotFoundException
          
          gigaByte.setBackground(Color.black); // Sets gigaByte radio background to black.
          gigaByte.setForeground(Color.white); // Sets gigaByte radio text to white.
+         
+         teraByte.setBackground(Color.black); // Sets gigaByte radio background to black.
+         teraByte.setForeground(Color.white); // Sets gigaByte radio text to white.
          
          radioList.setBackground(Color.black); // Sets JPanel radioList background to black.
          
