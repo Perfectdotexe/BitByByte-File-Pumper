@@ -164,21 +164,21 @@ public static void main(String[] args) throws IOException, FileNotFoundException
             	 byte[] nullValue = new byte [1];
             	 FileChannel rwChannel = null;
             	 try {
-					randomAccessFile = new RandomAccessFile(textBox.getText(), "rw");
-					rwChannel = randomAccessFile.getChannel();
+			randomAccessFile = new RandomAccessFile(textBox.getText(), "rw");
+			rwChannel = randomAccessFile.getChannel();
             	 	} catch (FileNotFoundException e3) {
-					e3.printStackTrace();
-				 }
-            	 ByteBuffer wrBuf = null;
+			e3.printStackTrace();
+			}
+            	 	ByteBuffer wrBuf = null;
             	 	try {
-					wrBuf = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get());
+			wrBuf = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get());
             	 	} catch (IOException e2) {
-					e2.printStackTrace();
+			e2.printStackTrace();
             	 	}
             	 	for (int i = 0; i < valueUserMain; i++)
             	 	{
-            	    wrBuf.put(nullValue);
-            	 }
+            	    	wrBuf.put(nullValue);
+            	 	}
     			UIManager.put("OptionPane.background", Color.black);
 				UIManager.put("Panel.background", Color.black);
 				UIManager.put("OptionPane.messageForeground", Color.white);
