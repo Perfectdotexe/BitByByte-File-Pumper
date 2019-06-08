@@ -1,7 +1,7 @@
 /*
 Program: File pumper
 Description: Increases the size of a file by adding null hexadecimal values (00) to the end depending on the amount the user wants in KB, MB, GB, or TB.
-Last modified: 5/14/19
+Last modified: 6/8/19
 Alias: Perfect.exe
 Name: Austin Tapia
 Github: https://github.com/Perfectdotexe
@@ -19,12 +19,13 @@ import java.awt.BorderLayout; // A border layout lays out a container, arranging
 import java.awt.event.*; // Opens entire java.awt.event library. Imported for MouseAdapter, MouseEvent, and ActionListener.
 import java.awt.Dimension; // The Dimension class encapsulates the width and height of a component (in integer precision) in a single object.
 import javax.swing.JRadioButton; // An implementation of a radio button -- an item that can be selected or deselected, and which displays its state to the user.
-import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.DataOutputStream;
+import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.nio.ByteBuffer;
 import javax.swing.UIManager;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -87,6 +88,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
             openFile.setDialogTitle("Select a Valid File"); // Changes title of Open File
             openFile.setFileSelectionMode(JFileChooser.FILES_ONLY);
             if (openFile.showOpenDialog(opnButt) == JFileChooser.APPROVE_OPTION){
+            textBox.getText().replace("\t","\\");
             textBox.setHorizontalAlignment(JTextField.LEFT);
             textBox.setText(openFile.getSelectedFile().getAbsolutePath());
              }
@@ -155,34 +157,33 @@ public static void main(String[] args) throws IOException, FileNotFoundException
          buttonPump.setBorderPainted(false); // Removes border paint.
          buttonPump.setFocusPainted(false); // Removes blue focus ring around the button.
          buttonPump.addActionListener(new ActionListener() {
-             @Override
-             public void actionPerformed(java.awt.event.ActionEvent evt) {
+             private RandomAccessFile randomAccessFile;
+             	@Override
+             	public void actionPerformed(java.awt.event.ActionEvent evt) {
             	 int valueUserMain = (Integer) valueBox.getValue();
-            	 int I = (Integer) 0;
             	 byte[] nullValue = new byte [1];
-              	 DataOutputStream dataOutputStream = null;
-    			try {
-    				dataOutputStream = new DataOutputStream(new FileOutputStream("C:\\Users\\Perfectdotexe\\Desktop\\nickprosper.txt", true));
-    			} catch (FileNotFoundException e) {
-    				e.printStackTrace();
-    			}
-           	 	do {
-             	try {
-             		for (int i = 0; i < valueUserMain * x.get(); ++i)
-    				dataOutputStream.write(nullValue);
-    			} catch (IOException e1) {
-    				e1.printStackTrace();
-    			}
-           	 	} while (I == valueUserMain);
-    			try {
-    		         UIManager.put("OptionPane.background", Color.black);
-    		         UIManager.put("Panel.background", Color.black);
-    		         UIManager.put("OptionPane.messageForeground", Color.white);
-    				JOptionPane.showMessageDialog(null, "File has been pumped", "Completed!", JOptionPane.PLAIN_MESSAGE);
-    				dataOutputStream.close();
-    			} catch (IOException e) {
-    				e.printStackTrace();
-    			}
+            	 FileChannel rwChannel = null;
+            	 try {
+					randomAccessFile = new RandomAccessFile(textBox.getText(), "rw");
+					rwChannel = randomAccessFile.getChannel();
+            	 	} catch (FileNotFoundException e3) {
+					e3.printStackTrace();
+				 }
+            	 ByteBuffer wrBuf = null;
+            	 	try {
+					wrBuf = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get());
+            	 	} catch (IOException e2) {
+					e2.printStackTrace();
+            	 	}
+            	 	for (int i = 0; i < valueUserMain; i++)
+            	 	{
+            	    wrBuf.put(nullValue);
+            	 }
+    			UIManager.put("OptionPane.background", Color.black);
+				UIManager.put("Panel.background", Color.black);
+				UIManager.put("OptionPane.messageForeground", Color.white);
+				JOptionPane.showMessageDialog(null, "File has been pumped", "Completed!", JOptionPane.PLAIN_MESSAGE);
+				System.exit(0);
                  }
                  });
          
@@ -250,7 +251,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
          
          butty.requestFocusInWindow(); // Sets focus on button to avoid focus on textField, because it will include "Choose a file..." if user types without clicking the textField.
          
-         mainWindow.setVisible(true); // Make the frame visisble on the screen via execution.
+         mainWindow.setVisible(true); // Make the frame visible on the screen via execution.
         
          opnButt.setFont(new Font("Arial", Font.BOLD, 13)); // Changes opnButt font to Arial, Italic, and to size 15.
          buttonInfo.setFont(new Font("Arial", Font.BOLD, 13)); // Changes opnButt font to Arial, Italic, and to size 15.
