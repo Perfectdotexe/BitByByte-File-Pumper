@@ -164,18 +164,18 @@ public static void main(String[] args) throws IOException, FileNotFoundException
             	 	ByteBuffer writeRead = null;
             	 	try {
             randomAccessFile.seek(randomAccessFile.length());
-			writeRead = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get()); // Multiples for correct file size.
+			writeRead = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get() / 2); // Multiples for correct file size.
 			rwChannel.position(randomAccessFile.length()); // Finds EOF.
             	 	} catch (IOException e2) {
             	 	e2.printStackTrace();
             	 	}
-            	 	for (int i = 0; i < valueUserMain; i++) // Creates a for loop based on the valueUserMain value.
+            	 	for (int i1 = 0; i1 < valueUserMain; i1++) // Creates a for loop based on the valueUserMain value.
             	 	{
             	    	try {
 							rwChannel.write(writeRead); // Writes data according to writeRead multiplication.
 						} catch (IOException e) {
 							e.printStackTrace();
-						}
+						} while (i1 == valueUserMain);
             	 	}
     			UIManager.put("OptionPane.background", Color.black);
 				UIManager.put("Panel.background", Color.black);
