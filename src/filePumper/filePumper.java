@@ -1,6 +1,6 @@
 /*
 Program: File pumper
-Description: Increases the size of a file by adding null hexadecimal values (00) to the end depending on the amount the user wants in KB, MB, or GB.
+Description: Increases the size of a file by adding null hexadecimal values (00) to the end depending on the amount the user wants in KB, MB, GB, or TB.
 Last modified: 6/10/19
 Alias: Perfect.exe
 Name: Austin Tapia
@@ -38,7 +38,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
 
          String currentUser = System.getProperty("user.name"); // Declares string currentUser with the initialization of the current Windows user.
 
-         // === *** Graphical User Interface *** ===
+         // === *** MAIN JFRAME *** ===
          JFrame mainWindow = new JFrame("BitByByte"); // Creates new window with the title "BitByByte"
          mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Exit the program on close of the frame.
          ImageIcon iconFaucet = new ImageIcon("faucet.jpg"); // Creates new ImageIcon object.
@@ -46,7 +46,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
          mainWindow.setResizable(false); // Disables re-sizing.
          mainWindow.setLocationRelativeTo(null); // Center JFrame window.
 
-         // *** Text Box ***
+         // *** TEXT BOX ***
          JTextField textBox = new JTextField("Input a valid file pathway here or click \"Open File\"..."); // Creates new text box with "Choose a file.." as the default text.
          textBox.setHorizontalAlignment(JTextField.CENTER);
          textBox.setBorder(javax.swing.BorderFactory.createEmptyBorder()); // Removes blue border around text box.
@@ -59,7 +59,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
             }
          });
 
-         // *** Text box for value ***
+         // *** TEXT BOX FOR VALUE ***
          JSpinner valueBox = new JSpinner();
          valueBox.setPreferredSize(new Dimension(168,25)); // Set sizing on text box.
          valueBox.setBorder(javax.swing.BorderFactory.createEmptyBorder()); // Removes border from text box.
@@ -70,7 +70,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
         	 }
          });
 
-         // *** File open button ***
+         // *** FILE OPEN BUTTON ***
          JPanel openPanel = new JPanel();
          openPanel.setLayout(new BorderLayout());
          JButton opnButt = new JButton("Open File");
@@ -92,7 +92,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
             }
          });
 
-         // *** Panel declarations ***
+         // *** PANEL DECLARATIONS ***
          JPanel texty = new JPanel(); // Creates new JPanel for grid
          JPanel butty = new JPanel(); // Creates new JPanel for grid
 
@@ -140,12 +140,12 @@ public static void main(String[] args) throws IOException, FileNotFoundException
          radioList.add(megaByte);
          radioList.add(gigaByte);
 
-         // *** Button file pump GUI ***
+         // *** BUTTOM PUMP FILE GUI ***
          JButton buttonPump = new JButton("Pump those hexidecimals!"); // Creates button.
          buttonPump.setBorderPainted(false); // Removes border paint.
          buttonPump.setFocusPainted(false); // Removes blue focus ring around the button.
          
-         // ** Actual program ***
+         // ** ACTUAL PROGRAM ***
          buttonPump.addActionListener(new ActionListener() {
              private RandomAccessFile randomAccessFile;
              	@Override
@@ -165,21 +165,32 @@ public static void main(String[] args) throws IOException, FileNotFoundException
             	 	try {
             randomAccessFile.seek(randomAccessFile.length());
 			writeRead = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get()); // Multiples for correct file size.
+			rwChannel.position(randomAccessFile.length());
             	 	} catch (IOException e2) {
             	 	e2.printStackTrace();
             	 	}
             	 	for (int i = 0; i < valueUserMain; i++) // Creates a for loop based on the valueUserMain value.
             	 	{
-            	    	writeRead.put(nullValue); // Writes data according to writeRead multiplication.
+            	    	try {
+							rwChannel.write(writeRead); // Writes data according to writeRead multiplication.
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
             	 	}
     			UIManager.put("OptionPane.background", Color.black);
 				UIManager.put("Panel.background", Color.black);
 				UIManager.put("OptionPane.messageForeground", Color.white);
 				JOptionPane.showMessageDialog(null, "File has been pumped", "Completed!", JOptionPane.PLAIN_MESSAGE);
+				try {
+					rwChannel.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				System.exit(0); // Exits program when finished.
                  }
                  });
 
+         // ** INFO BUTTON ***
          JButton buttonInfo = new JButton("More information"); // Creates button for more information.
          buttonInfo.setBorderPainted(false); // Removes border paint.
          buttonInfo.setFocusPainted(false); // Removes blue focus ring around the button.
@@ -189,7 +200,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
 		         UIManager.put("OptionPane.background", Color.black);
 		         UIManager.put("Panel.background", Color.black);
 		         UIManager.put("OptionPane.messageForeground", Color.white);
-                 	 JOptionPane.showMessageDialog(null, "Data Measurement Chart*"
+                 JOptionPane.showMessageDialog(null, "Data Measurement Chart*"
                  		+ "\n8 BITS = 1 BYTE" + "\n1000 BYTE = 1 KB" + "\n1000 KB = 1 MB" + "\n1000 MB = 1 GB"
                 		+ "\nExample: Step increment of 1 input value = 1 KB/MB/GB" + "\n* Minimum: 1 and the Maximum: 999 for KB and MB."
                  		+ "\nIf no radio button is selected default is KB automatically."
@@ -257,9 +268,9 @@ public static void main(String[] args) throws IOException, FileNotFoundException
 	     UIManager.put("Button.foreground", Color.WHITE);
 	     UIManager.put("TextField.background", Color.BLACK);
 	     UIManager.put("TextField.foreground", Color.WHITE);
- 	     UIManager.put("OptionPane.background", Color.BLACK);
-	     UIManager.put("OptionPane.messageForeground", Color.WHITE);
-	     UIManager.put("FileChooser.foreground", Color.white);  
-	     UIManager.put("Label.foreground", Color.white);  
+ 	 	 UIManager.put("OptionPane.background", Color.BLACK);
+		 UIManager.put("OptionPane.messageForeground", Color.WHITE);
+		 UIManager.put("FileChooser.foreground", Color.white);  
+		 UIManager.put("Label.foreground", Color.white);  
       }
 }
