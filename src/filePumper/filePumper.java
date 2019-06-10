@@ -157,13 +157,13 @@ public static void main(String[] args) throws IOException, FileNotFoundException
 			randomAccessFile = new RandomAccessFile(textBox.getText(), "rw");
 			rwChannel = randomAccessFile.getChannel();
             	 	} catch (FileNotFoundException e3) { // File not found error.
-        			JOptionPane.showMessageDialog(null, "File has not been found, closing with error.", "Error", JOptionPane.PLAIN_MESSAGE);
-        			System.exit(0); // Exits program.
-        			e3.printStackTrace();
+        		JOptionPane.showMessageDialog(null, "File has not been found, closing with error.", "Error", JOptionPane.PLAIN_MESSAGE);
+        		System.exit(0); // Exits program.
+        		e3.printStackTrace();
 			}
             	 	ByteBuffer writeRead = null;
             	 	try {
-            randomAccessFile.seek(randomAccessFile.length());
+            		randomAccessFile.seek(randomAccessFile.length());
 			writeRead = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get() / 2); // Multiples and divides for correct file size.
 			rwChannel.position(randomAccessFile.length()); // Finds EOF.
             	 	} catch (IOException e2) {
@@ -172,10 +172,10 @@ public static void main(String[] args) throws IOException, FileNotFoundException
             	 	for (int i1 = 0; i1 < valueUserMain; i1++) // Creates a for loop based on the valueUserMain value.
             	 	{
             	    	try {
-							rwChannel.write(writeRead); // Writes data according to writeRead multiplication.
-						} catch (IOException e) {
-							e.printStackTrace();
-						} while (i1 == valueUserMain);
+			rwChannel.write(writeRead); // Writes data according to writeRead multiplication.
+			} catch (IOException e) {
+			e.printStackTrace();
+			} while (i1 == valueUserMain);
             	 	}
     			UIManager.put("OptionPane.background", Color.black);
 				UIManager.put("Panel.background", Color.black);
@@ -200,7 +200,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
 		         UIManager.put("OptionPane.background", Color.black);
 		         UIManager.put("Panel.background", Color.black);
 		         UIManager.put("OptionPane.messageForeground", Color.white);
-                 JOptionPane.showMessageDialog(null, "Data Measurement Chart*"
+                 	 JOptionPane.showMessageDialog(null, "Data Measurement Chart*"
                  		+ "\n8 BITS = 1 BYTE" + "\n1000 BYTE = 1 KB" + "\n1000 KB = 1 MB" + "\n1000 MB = 1 GB"
                 		+ "\nExample: Step increment of 1 input value = 1 KB/MB/GB" + "\n* Minimum: 1 and the Maximum: 999 for KB and MB."
                  		+ "\nIf no radio button is selected default is KB automatically."
@@ -268,9 +268,9 @@ public static void main(String[] args) throws IOException, FileNotFoundException
 	     UIManager.put("Button.foreground", Color.WHITE);
 	     UIManager.put("TextField.background", Color.BLACK);
 	     UIManager.put("TextField.foreground", Color.WHITE);
- 	 	 UIManager.put("OptionPane.background", Color.BLACK);
-		 UIManager.put("OptionPane.messageForeground", Color.WHITE);
-		 UIManager.put("FileChooser.foreground", Color.white);  
-		 UIManager.put("Label.foreground", Color.white);  
+ 	     UIManager.put("OptionPane.background", Color.BLACK);
+	     UIManager.put("OptionPane.messageForeground", Color.WHITE);
+	     UIManager.put("FileChooser.foreground", Color.white);  
+	     UIManager.put("Label.foreground", Color.white);  
       }
 }
