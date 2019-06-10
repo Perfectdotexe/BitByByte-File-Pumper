@@ -189,7 +189,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
 		         UIManager.put("OptionPane.background", Color.black);
 		         UIManager.put("Panel.background", Color.black);
 		         UIManager.put("OptionPane.messageForeground", Color.white);
-                 JOptionPane.showMessageDialog(null, "Data Measurement Chart*"
+                 	 JOptionPane.showMessageDialog(null, "Data Measurement Chart*"
                  		+ "\n8 BITS = 1 BYTE" + "\n1000 BYTE = 1 KB" + "\n1000 KB = 1 MB" + "\n1000 MB = 1 GB"
                 		+ "\nExample: Step increment of 1 input value = 1 KB/MB/GB" + "\n* Minimum: 1 and the Maximum: 999 for KB and MB."
                  		+ "\nIf no radio button is selected default is KB automatically."
