@@ -164,7 +164,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
             	 	ByteBuffer writeRead = null;
             	 	try {
             randomAccessFile.seek(randomAccessFile.length());
-			writeRead = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get() / 2); // Multiples for correct file size.
+			writeRead = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get() / 2); // Multiples and divides for correct file size.
 			rwChannel.position(randomAccessFile.length()); // Finds EOF.
             	 	} catch (IOException e2) {
             	 	e2.printStackTrace();
