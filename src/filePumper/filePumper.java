@@ -257,9 +257,9 @@ public static void main(String[] args) throws IOException, FileNotFoundException
 	     UIManager.put("Button.foreground", Color.WHITE);
 	     UIManager.put("TextField.background", Color.BLACK);
 	     UIManager.put("TextField.foreground", Color.WHITE);
- 	 	 UIManager.put("OptionPane.background", Color.BLACK);
-		 UIManager.put("OptionPane.messageForeground", Color.WHITE);
-		 UIManager.put("FileChooser.foreground", Color.white);  
-		 UIManager.put("Label.foreground", Color.white);  
+ 	     UIManager.put("OptionPane.background", Color.BLACK);
+	     UIManager.put("OptionPane.messageForeground", Color.WHITE);
+	     UIManager.put("FileChooser.foreground", Color.white);  
+	     UIManager.put("Label.foreground", Color.white);  
       }
 }
