@@ -165,7 +165,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
             	 	try {
             randomAccessFile.seek(randomAccessFile.length());
 			writeRead = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get()); // Multiples for correct file size.
-			rwChannel.position(randomAccessFile.length());
+			rwChannel.position(randomAccessFile.length()); // Finds EOF.
             	 	} catch (IOException e2) {
             	 	e2.printStackTrace();
             	 	}
@@ -182,7 +182,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
 				UIManager.put("OptionPane.messageForeground", Color.white);
 				JOptionPane.showMessageDialog(null, "File has been pumped", "Completed!", JOptionPane.PLAIN_MESSAGE);
 				try {
-					rwChannel.close();
+					rwChannel.close(); // Closes stream.
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
