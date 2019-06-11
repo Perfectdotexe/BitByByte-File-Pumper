@@ -172,10 +172,10 @@ public static void main(String[] args) throws IOException, FileNotFoundException
             	 	for (int i1 = 0; i1 < valueUserMain; i1++) // Creates a for loop based on the valueUserMain value.
             	 	{
             	    	try {
-							rwChannel.write(writeRead); // Writes data according to writeRead multiplication/division.
-						} catch (IOException e) {
-							e.printStackTrace();
-						} while (i1 == valueUserMain);
+			rwChannel.write(writeRead); // Writes data according to writeRead multiplication/division.
+			} catch (IOException e) {
+			e.printStackTrace();
+			} while (i1 == valueUserMain);
             	 	}
     			UIManager.put("OptionPane.background", Color.black);
 				UIManager.put("Panel.background", Color.black);
