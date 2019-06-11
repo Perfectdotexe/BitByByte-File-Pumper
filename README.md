@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="images/examplemain.gif">
-</p>
+
 
 <p align="center"><b>⭐️ Star the project on GitHub — it helps! ⭐️</b></p>
 
