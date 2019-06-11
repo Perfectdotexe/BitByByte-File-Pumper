@@ -24,18 +24,18 @@ The graphical user interface was programmed line by line, I didn't use any IDE t
 Write once, run anywhere. Currently there isn't a file pumper out there programmed in Java, there was one, but it's gone now.
 
 ## Code Example
-```public void actionPerformed(java.awt.event.ActionEvent evt) {<br/>
-int valueUserMain = (Integer) valueBox.getValue(); // Grabs valueBox value.<br/>
-byte[] nullValue = new byte [1]; // Placeholder for length.<br/>
-FileChannel rwChannel = null;<br/>
-writeRead = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get() / 2); // Multiples and divides for correct file size.<br/>
-for (int i1 = 0; i1 < valueUserMain; i1++) // Creates a for loop based on the valueUserMain value.<br/>
-{<br/>
-try {<br/>
-rwChannel.write(writeRead); // Writes data according to writeRead multiplication/division.<br/>
-} catch (IOException e) {<br/>
-e.printStackTrace();<br/>
-} while (i1 == valueUserMain);<br/>
+```public void actionPerformed(java.awt.event.ActionEvent evt) {
+int valueUserMain = (Integer) valueBox.getValue(); // Grabs valueBox value.
+byte[] nullValue = new byte [1]; // Placeholder for length.
+FileChannel rwChannel = null;
+writeRead = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get() / 2); // Multiples and divides for correct file size.
+for (int i1 = 0; i1 < valueUserMain; i1++) // Creates a for loop based on the valueUserMain value.
+{
+try {
+rwChannel.write(writeRead); // Writes data according to writeRead multiplication/division.
+} catch (IOException e) {
+e.printStackTrace();
+} while (i1 == valueUserMain);
 ```
 
 **Data table:**<br/>
