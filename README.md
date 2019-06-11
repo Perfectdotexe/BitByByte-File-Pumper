@@ -49,7 +49,7 @@ You can download the JAR file <a href="https://github.com/Perfectdotexe/BitByByt
 
 ## How to use?
 Example: Step increment of 1 input value = 1 KB/MB/GB<br/>
-Minimum: 1 and the Maximum: 999 for KB and MB.<br/>
+Minimum: 1 for KB, MB, and GB. Maximum: 999 for KB and MB.<br/>
 If no radio button is selected default is KB automatically.
 
 ## Contribute
