@@ -50,7 +50,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
          JTextField textBox = new JTextField("Input a valid file pathway here or click \"Open File\"..."); // Creates new text box with "Choose a file.." as the default text.
          textBox.setHorizontalAlignment(JTextField.CENTER);
          textBox.setBorder(javax.swing.BorderFactory.createEmptyBorder()); // Removes blue border around text box.
-         textBox.setPreferredSize(new Dimension(441,25)); // Resizes text box, so they user can see the file directory.
+         textBox.setPreferredSize(new Dimension(445,25)); // Resizes text box, so they user can see the file directory.
          textBox.addMouseListener(new MouseAdapter() { // Adds listener to the mouse.
          @Override // Overrides parent class.
          public void mouseClicked(MouseEvent e) { // Declares mouse event when mouse is clicked.
@@ -61,7 +61,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
 
          // *** TEXT BOX FOR VALUE ***
          JSpinner valueBox = new JSpinner();
-         valueBox.setPreferredSize(new Dimension(168,25)); // Set sizing on text box.
+         valueBox.setPreferredSize(new Dimension(171,25)); // Set sizing on text box.
          valueBox.setBorder(javax.swing.BorderFactory.createEmptyBorder()); // Removes border from text box.
          valueBox.setModel(new javax.swing.SpinnerNumberModel(1, 1, 999, 1)); // Default: Initial = 1, Minimum= 1, Maximum = 999, and Size per step = 1.
          valueBox.addChangeListener(new ChangeListener() { // Creates listener for new value.
@@ -141,7 +141,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
          radioList.add(gigaByte);
 
          // *** BUTTOM PUMP FILE GUI ***
-         JButton buttonPump = new JButton("Pump those hexidecimals!"); // Creates button.
+         JButton buttonPump = new JButton("Pump those hexadecimals!"); // Creates button.
          buttonPump.setBorderPainted(false); // Removes border paint.
          buttonPump.setFocusPainted(false); // Removes blue focus ring around the button.
          
