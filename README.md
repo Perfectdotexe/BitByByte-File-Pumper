@@ -53,7 +53,7 @@ If no radio button is selected default is KB automatically.
 If you would like to contribute, just fork and push an update or make an issue.
 
 ## 📚 License
-Creative Commons Attribution 4.0 International License. <a href="https://github.com/Perfectdotexe">Perfect.exe</a><br/>
+Creative Commons Attribution 4.0 International License. <a href="https://github.com/Perfectdotexe">Perfect.exe</a><br/><br/><br/>
 <p align="center">
   <img src="images/eclipse.png">
 </p>
