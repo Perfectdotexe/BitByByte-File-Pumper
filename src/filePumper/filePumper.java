@@ -1,7 +1,7 @@
 /*
 Program: File pumper
 Description: Increases the size of a file by adding null hexadecimal values (00) to the end depending on the amount the user wants in KB, MB, GB, or TB.
-Last modified: 6/11/19
+Last modified: 6/10/19
 Alias: Perfect.exe
 Name: Austin Tapia
 Github: https://github.com/Perfectdotexe
@@ -202,7 +202,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
 		         UIManager.put("OptionPane.messageForeground", Color.white);
                  JOptionPane.showMessageDialog(null, "Data Measurement Chart*"
                  		+ "\n8 BITS = 1 BYTE" + "\n1000 BYTE = 1 KB" + "\n1000 KB = 1 MB" + "\n1000 MB = 1 GB"
-                		+ "\nExample: Step increment of 1 input value = 1 KB/MB/GB" + "\n* Minimum: 1 and the Maximum: 999 for KB and MB."
+                		+ "\nExample: Step increment of 1 input value = 1 KB/MB/GB" + "\n*Minimum: 1 for KB, MB, and GB." + "\nMaximum: 999 for KB and MB. 1 for GB."
                  		+ "\nIf no radio button is selected default is KB automatically."
                  		+ "\nMade by: https://github.com/Perfectdotexe", "How to use BitByByte", JOptionPane.INFORMATION_MESSAGE);
              }
