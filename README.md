@@ -1,4 +1,3 @@
-# BitByByte-File-Pumper
 <p align="center">
   <img src="images/example.gif">
 </p>
