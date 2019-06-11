@@ -9,7 +9,7 @@ Increases the size of a file by adding null hexadecimal value(s) (00) to the end
 The graphical user interface was programmed line by line, I didn't use WindowBuilder (Eclipse) to make the GUI. Reasoning why is that I took this up as a challenge to better understand how GUI's work using Java and low-level functions. Above all, it is user friendly and I'm not responsible for any damages.
 
 ## Screenshots
-<img src="images/screenshot1.PNG"><br/><img src="images/screenshot2.PNG"><br/><img src="images/screenshot3.PNG"><br/>
+<img src="images/screenshot1.PNG"><br/><img src="images/screenshot2.PNG"><br/><img src="images/screenshot.PNG"><br/>
 
 ## Tech/framework used
 - [Eclipse](https://www.eclipse.org/)
