@@ -38,7 +38,6 @@ e.printStackTrace();
 **1000 BYTE = 1 KB**<br/>
 **1000 KB = 1 MB**<br/>
 **1000 MB = 1 GB**<br/>
-**1000 GB = TB**<br/>
 
 ## Installation
 You can download the JAR file <a href="https://github.com/Perfectdotexe/BitByByte-File-Pumper/raw/master/BitByByte.jar">here</a>.
