@@ -2,7 +2,7 @@
   <img src="images/examplemain.gif">
 </p>
 
-<p align="center"><b>⭐️ Star the project on GitHub — it helps!</b></p>
+<p align="center"><b>⭐️ Star the project on GitHub — it helps! ⭐️</b></p>
 
 ## 🖥 BitByByte-File-Pumper
 Increases the size of a file by adding null hexadecimal value(s) (00) to the end depending on the amount the user wants in KB, MB, or GB. Usually, anti-virus softwares ignore files bigger than 100 MB therefore qualifiying this file pumper useful in that situation. Another way it could be used is for phising or testing a networks download speed. Above all, this is a penetration testing tool, not a black hat tool.
