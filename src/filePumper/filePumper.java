@@ -87,7 +87,6 @@ public static void main(String[] args) throws IOException, FileNotFoundException
             textBox.getText().replace("\t","\\"); // Adds extra / to existing / due to Java purposes.
             textBox.setHorizontalAlignment(JTextField.LEFT); // Sets text to left.
             textBox.setText(openFile.getSelectedFile().getAbsolutePath()); // Grabs full path to file.
-            
              }
             }
          });
