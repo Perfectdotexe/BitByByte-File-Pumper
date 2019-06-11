@@ -21,7 +21,6 @@ If you're using any code style like xo, standard etc. That will help others whil
 Include logo/demo screenshot etc.
 
 ## Tech/framework used
-<b>Built with</b>
 - [Eclipse](https://www.eclipse.org/)
 - [Java](https://www.java.com/)
 
