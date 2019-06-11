@@ -2,23 +2,23 @@
   <img src="images/examplemain.gif">
 </p>
 
-## BitByByte-File-Pumper
+## BitByByte-File-Pumper 🖥
 Increases the size of a file by adding null hexadecimal value(s) (00) to the end depending on the amount the user wants in KB, MB, or GB. Usually, anti-virus softwares ignore files bigger than 100 MB therefore qualifiying this file pumper useful in that situation. Another way it could be used is for phising or testing a networks download speed. Above all, this is a penetration testing tool, not a blackhat tool.
 
-## Motivation
+## Motivation ⏱
 The graphical user interface was programmed line by line, I didn't use WindowBuilder (Eclipse) to make the GUI. Reasoning why is that I took this up as a challenge to better understand how GUI's work using Java and low-level functions. Above all, it is user friendly and I'm not responsible for any damages.
 
-## Screenshots
+## Screenshots 📸
 <img src="images/screenshot1.PNG"><br/><img src="images/screenshot2.PNG"><br/><img src="images/screenshot.PNG"><br/>
 
-## Tech/framework used
+## Tech/framework used 💻
 - [Eclipse](https://www.eclipse.org/)
 - [Java](https://www.java.com/)
 
-## Features
+## Features 💡
 Write once, run anywhere. Currently there isn't a file pumper out there programmed in Java, there was one, but it's gone now.
 
-## Code Example
+## Code Example 🧠
 ```public void actionPerformed(java.awt.event.ActionEvent evt) {
 int valueUserMain = (Integer) valueBox.getValue(); // Grabs valueBox value.
 byte[] nullValue = new byte [1]; // Placeholder for length.
@@ -39,16 +39,16 @@ e.printStackTrace();
 **1000 KB = 1 MB**<br/>
 **1000 MB = 1 GB**<br/>
 
-## Installation
+## Installation 💼
 You can download the JAR file <a href="https://github.com/Perfectdotexe/BitByByte-File-Pumper/raw/master/BitByByte.jar">here</a>.
 
-## How to use?
+## How to use? 🔨
 Example: Step increment of 1 input value = 1 KB/MB/GB<br/>
 Minimum: 1 for KB, MB, and GB. Maximum: 999 for KB and MB. 1 for GB.<br/>
 If no radio button is selected default is KB automatically.
 
-## Contribute
+## Contribute 🔑
 If you would like to contribute, just fork and push an update or make an issue.
 
-## License
+## License 📚
 Creative Commons Attribution 4.0 International License. <a href="https://github.com/Perfectdotexe">Perfect.exe</a>
