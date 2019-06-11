@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/example.gif">
+  <img src="images/examplemain.gif">
 </p>
 
 ## BitByByte-File-Pumper
