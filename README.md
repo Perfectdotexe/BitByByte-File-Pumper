@@ -5,6 +5,7 @@
 
 [![Build Status](https://travis-ci.org/akashnimare/foco.svg?branch=master)](https://travis-ci.org/akashnimare/foco)
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/akashnimare/foco?branch=master&svg=true)](https://ci.appveyor.com/project/akashnimare/foco/branch/master)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 ## BitByByte-File-Pumper
 Increases the size of a file by adding null hexadecimal value(s) (00) to the end depending on the amount the user wants in KB, MB, or GB. Usually, anti-virus softwares ignore files bigger than 100 MB therefore qualifiying this file pumper useful in that situation. Another way it could be used is for phising or testing a networks download speed. Above all, this is a penetration testing tool, not a blackhat tool.
@@ -12,13 +13,8 @@ Increases the size of a file by adding null hexadecimal value(s) (00) to the end
 ## Motivation
 The graphical user interface was programmed line by line, I didn't use any IDE that constructs the GUI for the programmer. Reasoning why is that I took this up as a challenge to better understand how grids work using Java and low-level functions. Above all, it is user friendly and I'm not responsible for any damages.
 
-## Code style
-If you're using any code style like xo, standard etc. That will help others while contributing to your project. Ex. -
-
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
- 
 ## Screenshots
-Include logo/demo screenshot etc.
+<img src="images/screenshot1.PNG"><img src="images/screenshot2.PNG"><img src="images/screenshot3.PNG">
 
 ## Tech/framework used
 - [Eclipse](https://www.eclipse.org/)
