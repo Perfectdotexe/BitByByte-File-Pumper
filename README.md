@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/examplemain.gif">
+  <img src="images/exampleprogram.gif">
 </p>
 
 <p align="center"><b>⭐️ Star the project on GitHub — it helps! ⭐️</b></p>
