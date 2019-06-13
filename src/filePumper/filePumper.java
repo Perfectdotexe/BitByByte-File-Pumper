@@ -1,7 +1,7 @@
 /*
 Program: File pumper
 Description: Increases the size of a file by adding null hexadecimal values (00) to the end depending on the amount the user wants in KB, MB, GB, or TB.
-Last modified: 6/11/19
+Last modified: 6/12/19
 Alias: Perfect.exe
 Name: Austin Tapia
 Github: https://github.com/Perfectdotexe
@@ -146,15 +146,15 @@ public static void main(String[] args) throws IOException, FileNotFoundException
          
          // ** ACTUAL PROGRAM ***
          buttonPump.addActionListener(new ActionListener() {
-             private RandomAccessFile randomAccessFile;
+             private RandomAccessFile accFile;
              	@Override
              	public void actionPerformed(java.awt.event.ActionEvent evt) {
             	 int valueUserMain = (Integer) valueBox.getValue(); // Grabs valueBox value.
             	 byte[] nullValue = new byte [1]; // Placeholder for length.
-            	 FileChannel rwChannel = null;
+            	 FileChannel readWrite = null;
             	 try {
-			randomAccessFile = new RandomAccessFile(textBox.getText(), "rw");
-			rwChannel = randomAccessFile.getChannel();
+			accFile = new RandomAccessFile(textBox.getText(), "rw");
+			readWrite = accFile.getChannel();
             	 	} catch (FileNotFoundException e3) { // File not found error.
         			JOptionPane.showMessageDialog(null, "File has not been found, closing with error.", "Error", JOptionPane.PLAIN_MESSAGE);
         			System.exit(0); // Exits program.
@@ -162,16 +162,16 @@ public static void main(String[] args) throws IOException, FileNotFoundException
 			}
             	 	ByteBuffer writeRead = null;
             	 	try {
-            		randomAccessFile.seek(randomAccessFile.length());
-			writeRead = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get() / 2); // Multiples and divides for correct file size.
-			rwChannel.position(randomAccessFile.length()); // Finds EOF.
+            		accFile.seek(accFile.length());
+			writeRead = readWrite.map(FileChannel.MapMode.READ_WRITE, 0, nullValue.length * valueUserMain * x.get() / 2); // Multiples and divides for correct file size.
+			readWrite.position(accFile.length()); // Finds EOF.
             	 	} catch (IOException e2) {
             	 	e2.printStackTrace();
             	 	}
             	 	for (int i1 = 0; i1 < valueUserMain; i1++) // Creates a for loop based on the valueUserMain value.
             	 	{
             	    	try {
-			rwChannel.write(writeRead); // Writes data according to writeRead multiplication/division.
+			readWrite.write(writeRead); // Writes data according to writeRead multiplication/division.
 			} catch (IOException e) {
 			e.printStackTrace();
 			} while (i1 == valueUserMain);
@@ -181,7 +181,7 @@ public static void main(String[] args) throws IOException, FileNotFoundException
 				UIManager.put("OptionPane.messageForeground", Color.white);
 				JOptionPane.showMessageDialog(null, "File has been pumped", "Completed!", JOptionPane.PLAIN_MESSAGE);
 				try {
-					rwChannel.close(); // Closes stream.
+					readWrite.close(); // Closes stream.
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
