@@ -5,7 +5,7 @@
 <p align="center"><b>⭐️ Star the project on GitHub — it helps! ⭐️</b></p>
 
 ## 🖥 BitByByte-File-Pumper
-Increases the size of a file by adding null hexadecimal value(s) (00) to the end depending on the amount the user wants in KB, MB, or GB. Usually, anti-virus softwares ignore files bigger than 100 MB therefore qualifiying this file pumper useful in that situation. Another way it could be used is for phishing or testing a networks transfer speed or a thumb drives transfer speed. Above all, this is a penetration testing tool/utility, not a black hat tool. <b>Please use it ethically and for educational purposes only.</b>
+Increases the size of a file by adding null hexadecimal value(s) (00) to the end depending on the amount the user wants in KB, MB, or GB. Usually, anti-virus softwares ignore files bigger than 100 MB therefore qualifiying this file pumper useful in that situation. Another way it could be used is for phishing or testing a network/thumb drive transfer speed. Above all, this is a penetration testing tool/utility, not a black hat tool. <b>Please use it ethically and for educational purposes only.</b>
 
 ## ⏱ Motivation
 The graphical user interface was programmed line by line, I didn't use WindowBuilder (Eclipse) to make the GUI. Reasoning why is that I took this up as a challenge to better understand how GUI's work using Java and low-level functions. Also, it is user friendly and I'm not responsible for any damages.
