@@ -3,7 +3,6 @@ Program: File pumper
 Description: Increases the size of a file by adding null hexadecimal values (00) to the end depending on the amount the user wants in KB, MB, GB, or TB.
 Last modified: 6/12/19
 Alias: Perfect.exe
-Name: Austin Tapia
 Github: https://github.com/Perfectdotexe
 Blog: https://ewhitehat.com/
 *Cybersecurity student
